@@ -20,7 +20,18 @@ from seunome import config
 app = Flask(__name__)
 
 dados = [[config['username']]]
-lista = []
+lista = [
+    ["Brasil", "América do Sul", "5"],
+    ["Alemanha", "Europa", "4"],
+    ["Itália", "Europa", "4"],
+    ["Argentina", "América do Sul", "3"],
+    ["Uruguai", "América do Sul", "2"],
+    ["França", "Europa", "2"],
+    ["Espanha", "Europa", "1"],
+    ["Inglaterra", "Europa", "1"],
+    ["Países Baixos", "Europa", "0"],
+    ["Croácia", "Europa", "0"]
+]
 
 @app.get("/")
 def home():
@@ -30,13 +41,13 @@ def home():
 @app.post("/add")
 def add():
     user = []    
-    nome  = request.form.get("nome")
-    fone  = request.form.get("fone")
-    email = request.form.get("email")
-    if nome != '' and fone != '' and email != '':        
-        user.append(nome.strip())
-        user.append(fone.strip())
-        user.append(email.strip())
+    Seleção  = request.form.get("Seleção")
+    Continente  = request.form.get("Continente")
+    Titulos = request.form.get("Titulos")
+    if Seleção != '' and Continente != '' and Titulos != '':        
+        user.append(Seleção.strip())
+        user.append(Continente.strip())
+        user.append(Titulos.strip())
         lista.append(user)        
         print(f'Add: {lista}')                     
     else:
